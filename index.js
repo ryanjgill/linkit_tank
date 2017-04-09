@@ -20,7 +20,7 @@ function emitUserCount(socketIO) {
   socketIO.sockets.emit('user:count', socketIO.engine.clientsCount);
 }
 
-app.use('/public', express.static(__dirname + '/public'));
+app.use('/public', express.static(path.join(__dirname + '/public')));
 
 // index route
 app.get('/', function (req, res, next) {
