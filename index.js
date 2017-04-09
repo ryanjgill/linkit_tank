@@ -24,7 +24,7 @@ app.use('/public', express.static(__dirname + '/public'));
 
 // index route
 app.get('/', function (req, res, next) {
-  res.sendFile(path.join(__dirName + '/public/views/index.html'))
+  res.sendFile(path.join(__dirname + '/public/views/index.html'))
 });
 
 // board ready event
