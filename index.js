@@ -67,14 +67,14 @@ board.on('ready', function (err) {
     motor2.reverse(speed);
   }
 
-  function spinLef(_speed) {
+  function spinLeft(_speed) {
     var speed = _speed ? _speed : 128;
 
     motor1.forward(speed);
     motor2.reverse(speed);
   }
 
-  function spinLef(_speed) {
+  function spinRight(_speed) {
     var speed = _speed ? _speed : 128;
 
     motor1.reverse(speed);
