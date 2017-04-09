@@ -23,7 +23,7 @@ function emitUserCount(socketIO) {
 app.use('/public', express.static(__dirname + '/public'));
 
 // index route
-app.get('/', function () {
+app.get('/', function (req, res, next) {
   res.sendFile(path.join(__dirName + '/public/views/index.html'))
 });
 
