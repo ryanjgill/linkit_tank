@@ -4,7 +4,7 @@ var express = require('express')
   , path = require('path')
   , http = require('http').createServer(app)
   , socketIO = require('socket.io')(http)
-  , five = require('five')
+  , five = require('johnny-five')
   , os = require('os')
   , eth0 = os.networkInterfaces().apcli0
   , address = eth0 && eth0.length && eth0[0].address
@@ -24,7 +24,7 @@ app.get('/', function () {
 });
 
 // board ready event
-board.on('ready', function () {
+board.on('ready', function (err) {
   if (err) {
     console.log(err);
     board.reset();
