@@ -105,7 +105,7 @@ board.on('ready', function (err) {
 
     socket.on('spinLeft', spinLeft);
 
-    socket.on('spinRight', spingRight);
+    socket.on('spinRight', spinRight);
 
     socket.on('stop', stop);
 
