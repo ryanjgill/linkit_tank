@@ -16,6 +16,10 @@ var express = require('express')
     })
   ;
 
+function emitUserCount(socketIO) {
+  socketIO.sockets.emit('user:count', socketIO.engine.clientsCount);
+}
+
 app.use('/public', express.static(__dirname + '/public'));
 
 // index route
@@ -104,8 +108,13 @@ board.on('ready', function (err) {
       emitUserCount(socketIO);
     });
   });
+
+  // set the app to listen on PORT
+  http.listen(PORT);
+
+  // log the address and port
+  console.log('Up and running on ' + address + ':' + PORT);
 });
 
-function emitUserCount(socketIO) {
-  socketIO.sockets.emit('user:count', socketIO.engine.clientsCount);
-}
+
+
