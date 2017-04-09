@@ -18,6 +18,13 @@ var express = require('express')
 
 function emitUserCount(socketIO) {
   socketIO.sockets.emit('user:count', socketIO.engine.clientsCount);
+  console.log('Total users: ', socketIO.engine.clientsCount);
+}
+
+function checkForZeroUsers(socketIO) {
+  if (socketIO.engine.clientsCount === 0) {
+    stop();
+  }
 }
 
 app.use(express.static(path.join(__dirname + '/public')));
@@ -113,7 +120,7 @@ board.on('ready', function (err) {
     });
 
     socket.on('disconnect', function() {
-      console.log('User disconnected.');
+      checkForZeroUsers(socketIO);
       emitUserCount(socketIO);
     });
   });
