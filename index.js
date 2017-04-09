@@ -81,6 +81,11 @@ board.on('ready', function (err) {
     motor2.forward(speed);
   }
 
+  function stop() {
+    motor1.stop();
+    motor2.stop();
+  }
+
   // SocketIO events
   socketIO.on('connection', function (socket) {
     console.log('New connection!');
@@ -101,6 +106,10 @@ board.on('ready', function (err) {
 
     socket.on('spinRight', function (speed) {
       spinRight(speed);
+    });
+
+    socket.on('stop', function () {
+      stop();
     });
 
     socket.on('disconnect', function() {
