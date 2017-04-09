@@ -21,12 +21,6 @@ function emitUserCount(socketIO) {
   console.log('Total users: ', socketIO.engine.clientsCount);
 }
 
-function checkForZeroUsers(socketIO) {
-  if (socketIO.engine.clientsCount === 0) {
-    stop();
-  }
-}
-
 app.use(express.static(path.join(__dirname + '/public')));
 
 // index route
@@ -40,6 +34,12 @@ board.on('ready', function (err) {
     console.log(err);
     board.reset();
     return;
+  }
+
+  function checkForZeroUsers(socketIO) {
+    if (socketIO.engine.clientsCount === 0) {
+      stop();
+    }
   }
 
   console.log('board connected! Johnny-Five ready to go.')
