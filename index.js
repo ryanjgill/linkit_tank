@@ -1,11 +1,11 @@
 var express = require('express')
   , app = express()
   , fs = require('fs')
+  , os = require('os')
   , path = require('path')
   , http = require('http').createServer(app)
   , socketIO = require('socket.io')(http)
   , five = require('johnny-five')
-  , os = require('os')
   , eth0 = os.networkInterfaces().apcli0
   , address = eth0 && eth0.length && eth0[0].address
       ? eth0[0].address
@@ -99,25 +99,15 @@ board.on('ready', function (err) {
 
     emitUserCount(socketIO);
 
-    socket.on('forward', function (speed) {
-      forward(speed);
-    });
+    socket.on('forward', forward);
 
-    socket.on('reverse', function (speed) {
-      reverse(speed);
-    });
+    socket.on('reverse', reverse);
 
-    socket.on('spinLeft', function (speed) {
-      spinLeft(speed);
-    });
+    socket.on('spinLeft', spinLeft);
 
-    socket.on('spinRight', function (speed) {
-      spinRight(speed);
-    });
+    socket.on('spinRight', spingRight);
 
-    socket.on('stop', function () {
-      stop();
-    });
+    socket.on('stop', stop);
 
     socket.on('disconnect', function() {
       checkForZeroUsers(socketIO);
