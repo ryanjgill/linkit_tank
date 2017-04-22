@@ -7,9 +7,12 @@ var express = require('express')
   , socketIO = require('socket.io')(http)
   , five = require('johnny-five')
   , eth0 = os.networkInterfaces().apcli0
-  , address = eth0 && eth0.length && eth0[0].address
+  , brLan = os.networkInterfaces()['br-lan']
+  , address = eth0 && eth0.length && eth0[0].address && eth[0].address.indexOf('::') === -1
       ? eth0[0].address
-      : null
+      : brLan && brLan.length && brLan[0].address
+        ? brLan[0].address
+        : null
   , PORT = 3030
   , board = new five.Board({
       port: '/dev/ttyS0'
