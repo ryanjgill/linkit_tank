@@ -8,7 +8,7 @@ var express = require('express')
   , five = require('johnny-five')
   , eth0 = os.networkInterfaces().apcli0
   , brLan = os.networkInterfaces()['br-lan']
-  , address = eth0 && eth0.length && eth0[0].address && eth[0].address.indexOf('::') === -1
+  , address = eth0 && eth0.length && eth0[0].address && eth0[0].address.indexOf('::') === -1
       ? eth0[0].address
       : brLan && brLan.length && brLan[0].address
         ? brLan[0].address
