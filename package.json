@@ -12,5 +12,13 @@
     "duo"
   ],
   "author": "Ryan Gill",
-  "license": "ISC"
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ryanjgill/linkit_tank.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ryanjgill/linkit_tank/issues"
+  },
+  "homepage": "https://github.com/ryanjgill/linkit_tank#readme"
 }
