@@ -16,4 +16,4 @@ I'm using the L298n Dual H-bridge to control the direction of the tanks using
 the Johny-Five motor class.
 
 ## Standard Firmata
-Load the modified firmata sketch to the MCP of the LinkIt 7688 Duo.
+Load the modified firmata sketch to the MCU of the LinkIt 7688 Duo.
