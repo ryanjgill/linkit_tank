@@ -4,7 +4,10 @@
   "description": "Use this repo along with the LinkIt 7688 Duo to control a toy tank over wifi.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "sass": "npm run sass:style && npm run sass:controller",
+    "sass:style": "node-sass public/stylesheets/style.scss -o public/stylesheets",
+    "sass:controller": "node-sass public/stylesheets/controller.scss -o public/stylesheets"
   },
   "keywords": [
     "linkit",
