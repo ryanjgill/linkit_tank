@@ -12,6 +12,10 @@ div {
   user-select: none;
 }
 
+#main {
+  position: relative;
+}
+
 #left {
   position: absolute;
   left: 0;

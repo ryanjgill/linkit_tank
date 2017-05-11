@@ -21,12 +21,12 @@ window.onload = function () {
   });
 
   joystickL.on('end', function (joystick, data) {
-    socket.emit('stop');
+    socket.emit('stop', 'leftMotor');
     document.getElementById('leftMotor').innerHTML = 'stop()';
   });
 
   joystickR.on('end', function (joystick, data) {
-    socket.emit('stop');
+    socket.emit('stop', 'rightMotor');
     document.getElementById('rightMotor').innerHTML = 'stop()';
   });
 

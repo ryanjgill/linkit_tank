@@ -30,6 +30,10 @@ app.use(express.static(path.join(__dirname + '/public')));
 app.get('/', function (req, res, next) {
   res.sendFile(path.join(__dirname + '/public/index.html'))
 });
+// variable input controller route
+app.get('/controller', function (req, res, next) {
+  res.sendFile(path.join(__dirname + '/public/controller.html'))
+});
 
 // board ready event
 board.on('ready', function (err) {
@@ -112,14 +116,36 @@ board.on('ready', function (err) {
 
     // nipplejs variable input events
     socket.on('leftMotor', function (input) {
-      input[direction](input[speed]);
+      if (input.direction === 'forward') {
+        console.log('motor1:forward(' + input.force + ')');
+        motor1.forward(input.force);
+      } else {
+        console.log('motor1:reverse(' + input.force + ')');
+        motor1.reverse(input.force);
+      }
     });
 
     socket.on('rightMotor', function (input) {
-      input[direction](input[speed]);
+      if (input.direction === 'forward') {
+        console.log('motor2:forward(' + input.force + ')');
+        motor2.forward(input.force);
+      } else {
+        console.log('motor2:reverse(' + input.force + ')');
+        motor2.reverse(input.force);
+      }
     });
 
-    socket.on('stop', stop);
+    socket.on('stop', function (motor) {
+      if (!motor) {
+        stop();
+      } else if (motor === 'leftMotor') {
+        console.log('motor1:stop');
+        motor1.stop();
+      } else {
+        console.log('motor2:stop');
+        motor2.stop();
+      }
+    });
 
     socket.on('disconnect', function() {
       checkForZeroUsers(socketIO);
