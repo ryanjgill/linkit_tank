@@ -111,11 +111,11 @@ board.on('ready', function (err) {
     socket.on('spinRight', spinRight);
 
     // nipplejs variable input events
-    socket.on('leftMotor', input => {
+    socket.on('leftMotor', function (input) {
       input[direction](input[speed]);
     });
 
-    socket.on('rightMotor', input => {
+    socket.on('rightMotor', function (input) {
       input[direction](input[speed]);
     });
 
